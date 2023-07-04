@@ -1,0 +1,49 @@
+{% extends "polls/base.html" %}
+{% block content %}
+    <div class="content-section">
+        <legend class="border-bottom mb-4">Join Today</legend>
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="UsernameInput">Username*</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required>
+                <small class="text-muted">
+                    Must be 150 characters or fewer. Letters, digits, and @/./+/-/_ only.
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="EmailInput">Email*</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
+            </div>
+            <div class="form-group">
+                <label for="PasswordInput">Password*</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+                <small class="text-muted">
+                    <ul>
+                        <li>Your password can't be too similar to your other personal information.</li>
+                        <li>Your password must contain at least 8 characters.</li>
+                        <li>Your password can't be a commonly used password.</li>
+                        <li>Your password can't be entirely numeric.</li>
+                    </ul>
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="ConfirmPasswordInput">Password confirmation*</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Enter Password Again" required>
+                <small class="text-muted">Enter the same password as before, for verification.</small>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+                <div class="valid-feedback">
+                    You have successfully registered you can now log in!
+                  </div>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already have an account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+            </small>
+        </div>
+    </div>
+{% endblock %}
+
